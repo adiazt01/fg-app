@@ -1,0 +1,1 @@
+export type gamesType = Array<{title:string,id:number}>
