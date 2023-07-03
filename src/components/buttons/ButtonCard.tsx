@@ -1,6 +1,10 @@
 import { useContext, useEffect, useState } from "react";
+import {
+  addDatabase,
+  deleteDatabase,
+  searchIdDatabse,
+} from "../../database/favoriteData";
 import { GameProvider } from "../../context/games/GamesProvider";
-import { database } from "../../database/favoriteData";
 import { gamesType } from "../../types/gamesType";
 
 type Props = {
@@ -13,56 +17,31 @@ export const ButtonCard = ({ index, id }: Props) => {
   const games = useContext(GameProvider);
 
   useEffect(() => {
-    const favoriteData: string | null = JSON.stringify(
-      localStorage.getItem("data")
-    );
+    const getFavoriteFromLocalStorage = () => {
+      const favoriteLocalStorage = localStorage.getItem("data");
+      if (favoriteLocalStorage) {
+        const favoriteJson: gamesType = JSON.parse(favoriteLocalStorage);
+        const isFavorite = favoriteJson.some((game) => game.id === id);
+        setFavorite(isFavorite);
+      }
+    };
 
-    const favoriteJson: gamesType = JSON.parse(
-      favoriteData ? JSON.parse(favoriteData) : null
-    );
+    getFavoriteFromLocalStorage();
+  }, [id]);
 
-    if (favoriteJson) {
-      favoriteJson.map((game) => {
-        if (game.id === id) {
-          setFavorite(true);
-        }
-      });
-    }
-  }, [favorite, id]);
-
-  const addDatabase = (index: number) => {
-    database.push(games[index]);
-    const favoriteJson = JSON.stringify(database);
-    localStorage.setItem("data", favoriteJson);
+  const addFavorite = () => {
+    console.log(games[index]);
+    addDatabase(games[index]);
     setFavorite(!favorite);
   };
 
-  const deleteDatabase = () => {
-    const favoriteData: string | null = JSON.stringify(
-      localStorage.getItem("data")
-    );
-
-    const favoriteJson: gamesType = JSON.parse(
-      favoriteData ? JSON.parse(favoriteData) : null
-    );
-
-    if (favoriteJson) {
-      favoriteJson.map((game) => {
-        if (game.id === id) {
-          localStorage.setItem(
-            "data",
-            JSON.stringify(favoriteJson.filter((game) => game.id !== id))
-          );
-          setFavorite(!favorite);
-        }
-      });
-    }
+  const deleteFavorite = () => {
+    deleteDatabase(id);
+    setFavorite(!favorite);
   };
 
   return (
-    <button
-      onClick={favorite ? () => deleteDatabase() : () => addDatabase(index)}
-    >
+    <button onClick={favorite ? () => deleteFavorite() : () => addFavorite()}>
       {favorite ? "💖" : "🤍"}
     </button>
   );
