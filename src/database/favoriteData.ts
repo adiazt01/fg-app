@@ -30,11 +30,11 @@ export const deleteDatabase = (id: number) => {
   }
 };
 
-export const searchIdDatabse = (id:number) => {
+export const searchIdDatabse = (id: number) => {
   const favoriteLocalStorage = JSON.stringify(localStorage.getItem("data"));
   const favoriteJson: gamesType = JSON.parse(
     favoriteLocalStorage ? JSON.parse(favoriteLocalStorage) : []
   );
 
-  favoriteJson.map(game => game.id === id ? true:false)
+  favoriteJson.map((game) => (game.id === id ? true : false));
 };
