@@ -14,12 +14,12 @@ export const GameCard = (props: props) => {
 
   return (
       <div className="GameCard">
-        <img loading="lazy" src={`${thumbnail}`} alt="" />
+        <img className="GameCard-img" loading="lazy" src={`${thumbnail}`} alt="" />
         <p className="GameCard-title">{title}</p>
         <div className="GameCard__buttonContainer">
           <Link
             className="GameCard__buttonContainer-link"
-            to={`/games/${id}`}
+            to={`/fg-app/games/${id}`}
           >
             Ver juego
           </Link>

@@ -11,7 +11,7 @@ export const Home = () => {
 
   const handlerSearch = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
     e.preventDefault;
-    navigate("/search");
+    navigate("/fg-app/search");
   };
 
   const sortGames = useMemo(

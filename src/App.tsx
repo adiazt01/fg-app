@@ -11,11 +11,11 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/search" element={<Search />}></Route>
-        <Route path="/favorite" element={<Favorites />} />
+        <Route path="/fg-app/" element={<Home />} />
+        <Route path="/fg-app/search" element={<Search />}></Route>
+        <Route path="/fg-app/favorite" element={<Favorites />} />
+        <Route path="/fg-app/games/:id" element={<GameInfo />} />
         <Route path="*" element={"No encontrado"} />
-        <Route path="/games/:id" element={<GameInfo />} />
       </Routes>
     </BrowserRouter>
   );

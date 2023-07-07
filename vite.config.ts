@@ -10,5 +10,5 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
   },
-  base: "/el-nombre-de-tu-repositorio/",
+  base: "/fg-app/",
 });

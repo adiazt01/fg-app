@@ -4,8 +4,8 @@ import '/src/styles/Navbar.scss'
 
 export const Navbar = () => {
   const links = [
-    { link: "/", label: "Home" },
-    { link: "/favorite", label: "Favorite" },
+    { link: "/fg-app/", label: "Home" },
+    { link: "/fg-app/favorite", label: "Favorite" },
   ];
 
   return (
