@@ -1,18 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import {
-  addDatabase,
-  deleteDatabase,
-  searchIdDatabse,
-} from "../../database/favoriteData";
+import { addDatabase, deleteDatabase } from "../../database/favoriteData";
 import { GameProvider } from "../../context/games/GamesProvider";
 import { gamesType } from "../../types/gamesType";
+import {AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 type Props = {
   index: number;
   id: number;
+  className: string;
 };
 
-export const ButtonCard = ({ index, id }: Props) => {
+export const ButtonCard = ({ index, id, className }: Props) => {
   const [favorite, setFavorite] = useState(false);
   const games = useContext(GameProvider);
 
@@ -30,7 +28,6 @@ export const ButtonCard = ({ index, id }: Props) => {
   }, [id]);
 
   const addFavorite = () => {
-    console.log(games[index]);
     addDatabase(games[index]);
     setFavorite(!favorite);
   };
@@ -41,8 +38,11 @@ export const ButtonCard = ({ index, id }: Props) => {
   };
 
   return (
-    <button onClick={favorite ? () => deleteFavorite() : () => addFavorite()}>
-      {favorite ? "💖" : "🤍"}
+    <button
+      className={className}
+      onClick={favorite ? () => deleteFavorite() : () => addFavorite()}
+    >
+      {favorite ? <AiFillHeart/> : <AiOutlineHeart/>}
     </button>
   );
 };

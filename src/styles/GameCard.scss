@@ -1,0 +1,75 @@
+@import "./theme/default.scss";
+
+.GameCard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: space-between;
+  background-color: $primary-color;
+  animation: popUp 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 90%;
+  height: auto;
+
+  .GameCard-title {
+    font-weight: 500;
+    font-size: clamp(15px, 8vw, 12px);
+    text-align: center;
+    margin: 10px 0px 4px;
+    color: $title-color;
+  }
+
+  .GameCard-img {
+    object-fit: contain;
+    object-position: top;
+  }
+
+  .GameCard__buttonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px auto;
+    width: 80%;
+    margin-bottom: 10px;
+
+    .GameCard__buttonContainer-link {
+      background-color: $button-bg;
+      display: flex;
+      flex-direction: row;
+      text-decoration: none;
+      color: $button-text;
+      text-align: center;
+      padding: 2px 2.7vw 5px;
+      border-radius: 10px;
+      align-items: center;
+      transition: 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    .GameCard__buttonContainer-buttonFav {
+      height: 35px;
+      border-radius: 20px;
+      background-color: transparent;
+      outline: none;
+      border: 0;
+      font-size: clamp(20px, 8vw, 30px);
+      color: $fav-color;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+@keyframes popUp {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}

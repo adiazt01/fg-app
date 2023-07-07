@@ -1,28 +1,40 @@
-import { useState, useContext } from "react";
+import { useContext, useMemo } from "react";
 import { GameCard } from "../components/card/GameCard";
 import { GameProvider } from "../context/games/GamesProvider";
 import { useInterserctionObserver } from "../hooks/useIntersectionObserver";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
-  const [search, setSearch] = useState("");
   const games = useContext(GameProvider);
+  const navigate = useNavigate();
   const { element, load } = useInterserctionObserver();
+
+  const handlerSearch = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+    e.preventDefault;
+    navigate("/search");
+  };
+
+  const sortGames = useMemo(
+    () => games?.sort(() => Math.random() - 0.5),
+    [games]
+  );
 
   return (
     <main>
-      <header></header>
-      <input
-        type="text"
-        onChange={(input) => setSearch(input.currentTarget.value)}
-      />
-      <section>
-        {games
-          ?.filter((game) => game.title.match(search))
-          .slice(0, load)
-          .map((game, index) => (
-            <GameCard game={game} index={index} key={index} />
-          ))}
-        <div ref={element}>Hola</div>
+      <div className="SearchBar">
+        <input
+          disabled={sortGames ? false : true}
+          className="SearchBar-input"
+          type="text"
+          onClick={handlerSearch}
+          placeholder="Overwatch 2"
+        />
+      </div>
+      <section className="container-games">
+        {sortGames?.slice(0, load).map((game, index) => (
+          <GameCard game={game} key={index} index={index} />
+        ))}
+        <div ref={element} style={{ marginTop: "50vh" }}></div>
       </section>
     </main>
   );

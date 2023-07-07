@@ -1,0 +1,31 @@
+@import "./theme/default.scss";
+
+.navbar {
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 18px;
+  justify-content: space-between;
+  background-color: $nav-color;
+
+  .navbar-logo{
+    font-size: clamp(12px, 5vw, 25px);
+    font-weight: 500;
+    background: linear-gradient(45deg,#a748ff, #0db3e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .navbar__linkContainer {
+    display: flex;
+    gap: 20px;
+
+    .navbar__linkContainer-link {
+      color: $link-color;
+      font-size: clamp(12px, 5vw, 20px);
+      text-decoration: none;
+      font-weight: 500;
+    }
+  }
+}

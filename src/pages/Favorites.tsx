@@ -8,7 +8,7 @@ export const Favorites = () => {
   );
 
   return (
-    <section>
+    <section className="container-games">
       {favoriteJson.map((game, index) => (
         <GameCard key={index} index={index} game={game}></GameCard>
       ))}

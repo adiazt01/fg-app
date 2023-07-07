@@ -1,0 +1,157 @@
+@import "./theme/default.scss";
+
+.GameInfo {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 5vh auto;
+  align-items: center;
+  animation: apparing .3s;
+
+  .GameInfo__cover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .GameInfo__cover-img {
+      width: 100%;
+    }
+
+    .GameInfo__cover-viewButton {
+      color: $button-text;
+      padding: 0px 5vw 4px;
+      text-decoration: none;
+      margin-top: 20px;
+      font-weight: 400;
+      font-size: clamp(12px, 8vw, 20px);
+      border-radius: 10px;
+      background-color: $button-bg;
+      transition: .3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .GameInfo__info {
+    margin-top: 10px;
+    text-align: center;
+
+    .GameInfo__info-description {
+      color: $p-color;
+    }
+
+    .GameInfo__info__details {
+      margin-top: 6px;
+      color: $p-color;
+
+      .GameInfo__info__details-detail {
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+.GameInfo__info-title {
+  font-size: clamp(30px, 8vw, 30px);
+  color: $title-color;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
+@media (min-width: 768px) {
+  .GameInfo {
+    margin-top: 5vh;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .GameInfo__cover {
+      width: 40%;
+      display: flex;
+      margin-top: 20px;
+
+      .GameInfo__cover-img {
+        width: 80%;
+      }
+
+      .GameInfo__cover-viewButton {
+        margin-top: 30px;
+      }
+    }
+
+    .GameInfo__info {
+      width: 55%;
+      text-align: left;
+
+      .GameInfo__info-title {
+        margin-top: 0px;
+      }
+    }
+  }
+}
+
+@keyframes apparing {
+  0%{
+    opacity: 0;
+  }
+}
+
+/* Loading */
+.lds-ellipsis {
+    margin: 20vh auto;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: $effect-color;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+  
